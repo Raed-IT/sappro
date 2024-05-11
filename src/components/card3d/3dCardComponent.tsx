@@ -2,23 +2,23 @@ import {CardBody, CardContainer, CardItem} from "./3dCard";
 import React from "react";
 import {Image, Shimmer} from 'react-shimmer'
 
-export default function Card3DComponent({title, info, image, id}) {
+export default function Card3DComponent({post,image}) {
     return (
-        <CardContainer className="inter-var"  key={id} >
+        <CardContainer className="inter-var"  key={post.id} >
             <CardBody
                 className="	 relative group/card  dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[25rem] h-auto rounded-xl p-6 border  ">
                 <CardItem
                     translateZ="50"
                     className=" line-clamp-1 text-xl font-bold text-neutral-600 dark:text-white"
                 >
-                    {title}
+                    {post.title}
                 </CardItem>
                 <CardItem
                     as="p"
                     translateZ="60"
                     className=" line-clamp-2	 text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
                 >
-                    {info}
+                    {post.body}
                 </CardItem>
                 <CardItem translateZ="100" className="w-full mt-4">
                     {image}

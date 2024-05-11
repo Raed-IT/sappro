@@ -26,7 +26,7 @@ export const postsApi = createApi({
                 query: (payload) => {
                     console.log(payload)
                     return ({
-                        url: 'post',
+                        url: 'posts',
                         method: 'POST',
                         body: payload,
                     })

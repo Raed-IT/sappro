@@ -19,9 +19,7 @@ function PostsListComponents() {
                 : data != null ?
                     data.map(post => <Link key={post.id} to={AppRouters.showPost + '/' + post.id} state={post}>
                         <Card3DComponent
-                            id={post.id}
-                            info={post?.body}
-                            title={post?.title}
+                            post={post}
                             image={<Image
                                 height="300px"
                                 width="1000"
