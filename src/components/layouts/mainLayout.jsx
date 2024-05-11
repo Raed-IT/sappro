@@ -4,12 +4,44 @@ import {FloatingNav} from "../floatingNavbar/floatingNavbar";
 import {Link} from "react-router-dom";
 import AppRouters from "../../data/constants/appRouters";
 import {cn} from "../../utils/cn";
+import {useEffect, useState} from "react";
+import {IoMoon, IoSunny} from "react-icons/io5";
+import useLocalStorage from "../../data/hooks/useLocalStorage";
+import Popup from "react-animated-popup";
+import {CgClose} from "react-icons/cg";
 
 function MainLayout() {
     const location = useLocation();
-    console.log(location.pathname === AppRouters.addPost)
+    const [dark, setDark] = useLocalStorage("dark", 0);
+    const [showFeatures, setShowFeatures] = useLocalStorage("showFeatures", 0);
+
+    useEffect(() => {
+
+        if (dark) {
+            document.body.classList.toggle("dark");
+        }
+    }, [])
+    const darkModeHandler = () => {
+        document.body.classList.toggle("dark");
+        setDark(!dark)
+    }
     return (
         <div className={"dark:bg-gray-950"}>
+            <Popup style={{backgroundColor: dark ? 'black' : "white"}} className={'bg-black '} visible={showFeatures}
+                   onClose={() => setShowFeatures(false)}>
+
+                <button onClick={() => setShowFeatures(false)}><CgClose className={'dark:text-white'}/></button>
+                <h1 className={'text-3xl my-6 dark:text-white'}>Features</h1>
+                <ul className={'dark:text-white'}>
+                    <li>Fetch All Posts From Api</li>
+                    <li>Create Post</li>
+                    <li>Show Post</li>
+                    <li>Update Post</li>
+                    <li>Delete Post</li>
+                    <li>Dark Light Mode (save locally through Custom hook)</li>
+                </ul>
+
+            </Popup>
             <FloatingNav navItems={
                 <div className={'flex'}>
                     <Link
@@ -22,7 +54,14 @@ function MainLayout() {
                         to={AppRouters.addPost}>
                         <span className=" text-sm">Add Post</span>
                     </Link>
-
+                    <button className={'text-black dark:text-white px-5 '} onClick={() => darkModeHandler()}>
+                        {
+                            dark && <IoSunny/>
+                        }
+                        {
+                            !dark && <IoMoon/>
+                        }
+                    </button>
 
                 </div>
             }/>

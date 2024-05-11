@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import loading from "./../assets/svg/loading.svg";
 
 function ControlledButton({isLoadingButton, title, onClick}) {

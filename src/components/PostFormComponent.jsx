@@ -28,22 +28,53 @@ function PostFormComponent({initVal}) {
     const formik = useFormik({
         initialValues: initVal,
         validate,
+        onSubmit: async (values) => {
+            if (initVal.title) {
+                await updatePostRequest({
+                    id: initVal.id,
+                    payload: {
+                        "title": formik.values.title,
+                        "body": formik.values.body,
+                    }
+                }).then((val) => {
+                    if (Object?.keys(val).includes('error')) {
+                        toast("Error : " + val?.error?.status);
+                    } else {
+                        toast("Done Update ");
+                        navigate(AppRouters.index);
+                    }
+                });
+            } else {
+                addPostRequest({
+                    "title": formik.values.title,
+                    "body": formik.values.body,
+                }).then((val) => {
+                    if (Object?.keys(val).includes('error')) {
+                        toast("Error : " + val?.error?.status);
+                    } else {
+                        toast("Done Add ");
+                        navigate(AppRouters.index);
+                    }
+                });
+            }
+        },
     });
 
 
     return <>
         <div className="w-full max-w-lg">
-            <form onSubmit={formik.handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h1 className={'py-5 text-3xl mb-5'}>{initVal.title ? 'Update Post' : 'Add Post'}</h1>
+            <form onSubmit={formik.handleSubmit}
+                  className="bg-white dark:bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <h1 className={'py-5 text-3xl mb-5 dark:text-white'}>{initVal.title ? 'Update Post' : 'Add Post'}</h1>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+                    <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2" htmlFor="title">
                         Title
                     </label>
                     <input
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.title}
-                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " + (formik.errors.title ? 'border-red-500' : '')}
+                        className={"shadow  appearance-none border rounded w-full py-2 px-3     focus:outline-none focus:shadow-outline " + (formik.errors.title ? 'border-red-500' : '')}
                         id="title"
                         type="text"
                         placeholder="Title"/>
@@ -51,7 +82,7 @@ function PostFormComponent({initVal}) {
                         <p className="text-red-500 text-xs italic">{formik.errors.title}</p> : null}
                 </div>
                 <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="body">
+                    <label className="block dark:text-white text-gray-700 text-sm font-bold mb-2" htmlFor="body">
                         Body
                     </label>
                     <textarea
@@ -70,37 +101,7 @@ function PostFormComponent({initVal}) {
                         title={initVal.title ? 'Update Post' : 'Add Post'}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none  w-full focus:shadow-outline"
                         isLoadingButton={isAdd || isUpdate}
-                        onClick={async () => {
-                            if (initVal.title) {
-                                await updatePostRequest({
-                                    id: initVal.id,
-                                    payload: {
-                                        "title": formik.values.title,
-                                        "body": formik.values.body,
-                                    }
-                                }).then((val) => {
-                                    if (Object?.keys(val).includes('error')) {
-                                        toast("Error : " + val?.error?.status);
-                                    } else {
-                                        toast("Done Update ");
-                                        navigate(AppRouters.index);
-                                    }
-                                });
-                            } else {
-                                addPostRequest({
-                                    "title": formik.values.title,
-                                    "body": formik.values.body,
-                                }).then((val) => {
-                                    if (Object?.keys(val).includes('error')) {
-                                        toast("Error : " + val?.error?.status);
-                                    } else {
-                                        toast("Done Add ");
-                                        navigate(AppRouters.index);
-                                    }
-                                });
-                            }
-                        }
-                        }/>
+                        onClick={async () => formik.submitForm()}/>
                 </div>
             </form>
 

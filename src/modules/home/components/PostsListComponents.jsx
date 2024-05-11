@@ -13,7 +13,7 @@ function PostsListComponents() {
         return <div>an error accord ....</div>
     }
     return (
-        <div className={'grid lg:grid-cols-2 md:grid-cols-1  xl:grid-cols-3'}>
+        <div className={'grid lg:grid-cols-2 md:grid-cols-1   xl:grid-cols-3'}>
             {isLoading ?
                 <LoadingListComponent/>
                 : data != null ?

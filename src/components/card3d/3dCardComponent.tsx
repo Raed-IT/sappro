@@ -1,6 +1,5 @@
 import {CardBody, CardContainer, CardItem} from "./3dCard";
 import React from "react";
-import {Image, Shimmer} from 'react-shimmer'
 
 export default function Card3DComponent({post,image}) {
     return (

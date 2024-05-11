@@ -4,7 +4,7 @@ function LoadingListComponent() {
     return (
         <>
             {Array.from({length: 20,}, (v, i) => i).map(index =>
-                <div key={index}><Shimmer  className={'m-5 rounded-xl'} height={500} width={400}/> </div>
+                <div key={index}><Shimmer width={350}   className={'m-auto mt-4 rounded-xl'}   height={300}/> </div>
             )}
         </>
     );
