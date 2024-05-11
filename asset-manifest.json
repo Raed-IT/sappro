@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/sappro/static/css/main.69dff4d3.css",
+    "main.js": "/sappro/static/js/main.08cba3d1.js",
+    "static/js/453.845fa056.chunk.js": "/sappro/static/js/453.845fa056.chunk.js",
+    "static/media/loading.svg": "/sappro/static/media/loading.0623e12edb559190ca239d4ec6a08510.svg",
+    "index.html": "/sappro/index.html",
+    "main.69dff4d3.css.map": "/sappro/static/css/main.69dff4d3.css.map",
+    "main.08cba3d1.js.map": "/sappro/static/js/main.08cba3d1.js.map",
+    "453.845fa056.chunk.js.map": "/sappro/static/js/453.845fa056.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69dff4d3.css",
+    "static/js/main.08cba3d1.js"
+  ]
+}
