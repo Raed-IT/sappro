@@ -12,7 +12,7 @@ export function TracingBeamComponent({post}) {
                     <div className={'flex justify-start'}>
                         <DeletePostControlledPopup post={post}/>
                         <Link className="bg-black my-4 text-white rounded-full text-sm w-fit px-4 py-1 mb-4"
-                              to={AppRouters.updatePost}>
+                              to={AppRouters.updatePost+'/'+post.id} state={post}>
                             Edit
                         </Link>
                     </div>

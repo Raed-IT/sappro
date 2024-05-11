@@ -1,11 +1,15 @@
 import PostFormComponent from "../../components/PostFormComponent";
+import {useLocation} from "react-router";
 
-function UpdatePost({post}) {
+function UpdatePost() {
+    const {state} = useLocation();
+
     return <div className={"min-h-screen pt-20 flex justify-center align-middle"}>
         <PostFormComponent
             initVal={{
-                "title": post.title,
-                "body": post.body,
+                "title": state.title,
+                "body": state.body,
+                "id": state.id,
             }}
         />
     </div>;

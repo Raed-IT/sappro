@@ -73,8 +73,11 @@ function PostFormComponent({initVal}) {
                         onClick={async () => {
                             if (initVal.title) {
                                 await updatePostRequest({
-                                    "title": formik.values.title,
-                                    "body": formik.values.body,
+                                    id: initVal.id,
+                                    payload: {
+                                        "title": formik.values.title,
+                                        "body": formik.values.body,
+                                    }
                                 }).then((val) => {
                                     if (Object?.keys(val).includes('error')) {
                                         toast("Error : " + val?.error?.status);
