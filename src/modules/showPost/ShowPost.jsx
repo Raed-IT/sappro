@@ -7,8 +7,8 @@ import PostsListComponents from "../home/components/PostsListComponents";
 function ShowPost() {
     const {state} = useLocation();
     return (
-        <div className={"min-h-screen"}>
-            <TracingBeamComponent title={state.title} id={state.id} info={state.body}/>
+        <div className={"min-h-screen pb-20"}>
+            <TracingBeamComponent post={state}/>
         </div>
     );
 }
