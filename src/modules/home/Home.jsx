@@ -1,6 +1,13 @@
+import {useGetPostsQuery} from "../../data/api/posts-api";
+import LoadingListComponent from "./components/loadingListComponent";
+import PostsListComponents from "./components/PostsListComponents";
+
 function Home() {
+    // user getQuery hook from postsApi
     return (
-        <h1>Home</h1>
+        <div className={"container m-auto"}>
+           <PostsListComponents/>
+        </div>
     );
 }
 
