@@ -1,4 +1,5 @@
 {
+  "homepage": "http://Raed-IT.github.io/sappro",
   "name": "sappro",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +11,7 @@
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
     "framer-motion": "^11.1.9",
+    "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-animated-popup": "^0.1.9",
     "react-dom": "^18.3.1",
@@ -25,6 +27,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "poredeploy": "npm run build",
+    "deploy":"gh-pages -d buildgi" ,
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
