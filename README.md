@@ -1,4 +1,4 @@
-# SAPPRO First tast
+# SAPPRO First task
 ###Features
 - fetch all posts from   [jsonplaceholder](https://jsonplaceholder.typicode.com "jsonplaceholder");
 - show post
