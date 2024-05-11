@@ -16,7 +16,6 @@ function MainLayout() {
     const [showFeatures, setShowFeatures] = useLocalStorage("showFeatures", 0);
 
     useEffect(() => {
-
         if (dark) {
             document.body.classList.toggle("dark");
         }
@@ -28,7 +27,8 @@ function MainLayout() {
     return (
         <div className={"dark:bg-gray-950"}>
             <Popup style={{backgroundColor: dark ? 'black' : "white"}} className={'bg-black '} visible={showFeatures}
-                   onClose={() => setShowFeatures(false)}>
+                   onClose={() => {
+                   }}>
 
                 <button onClick={() => setShowFeatures(false)}><CgClose className={'dark:text-white'}/></button>
                 <h1 className={'text-3xl my-6 dark:text-white'}>Features</h1>
