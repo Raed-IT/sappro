@@ -21,9 +21,8 @@ export const DeletePostControlledPopup = ({post}) => {
                 <h1 className={'mb-8'}>Delte Post </h1>
                 <p>The post '''{post.title}''' will be deleted</p>
                 <div className={'flex justify-between'}>
-                    <ControlledButton isLoading={isDelete} onClick={() => {
-                        deletedPostRequest(post).then((va) => {
-                                console.log(va);
+                    <ControlledButton isLoadingButton={isDelete} onClick={async () => {
+                     await   deletedPostRequest(post).then((va) => {
                                 if (Object?.keys(va).includes('error')) {
                                     toast("Error : " + va?.error?.status);
                                 } else {
