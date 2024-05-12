@@ -25,7 +25,7 @@ function MainLayout() {
         setDark(!dark)
     }
     return (
-        <div className={"dark:bg-gray-950"}>
+        <div className={"dark:bg-gray-950 pt-28"}>
             <Popup style={{backgroundColor: dark ? 'black' : "white"}} className={'bg-black '} visible={showFeatures}
                    onClose={() => {
                    }}>
